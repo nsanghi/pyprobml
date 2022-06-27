@@ -1,0 +1,137 @@
+An error occurred while executing the following cell:
+------------------
+%matplotlib inline
+
+import sys
+import os
+
+
+# sys.path.append(os.path.abspath('../'))
+
+
+import numpy as np
+import pandas as pd
+
+try:
+    import tensorflow as tf
+except ModuleNotFoundError:
+    %pip install -qq tensorflow
+    import tensorflow as tf
+try:
+    import tensorflow_probability as tfp
+except ModuleNotFoundError:
+    %pip install -qq tensorflow-probability
+    import tensorflow_probability as tfp
+import matplotlib.pyplot as plt
+
+try:
+    from causalimpact import CausalImpact
+except ModuleNotFoundError:
+    %pip install -qq causalimpact
+    from causalimpact import CausalImpact
+
+
+tfd = tfp.distributions
+plt.rcParams["figure.figsize"] = [15, 10]
+------------------
+
+---------------------------------------------------------------------------
+ImportError                               Traceback (most recent call last)
+/tmp/ipykernel_4421/611632792.py in <module>
+     12 
+     13 try:
+---> 14     import tensorflow as tf
+     15 except ModuleNotFoundError:
+     16     get_ipython().run_line_magic('pip', 'install -qq tensorflow')
+
+~/miniconda3/envs/py37/lib/python3.7/site-packages/tensorflow/__init__.py in <module>
+     35 import typing as _typing
+     36 
+---> 37 from tensorflow.python.tools import module_util as _module_util
+     38 from tensorflow.python.util.lazy_loader import LazyLoader as _LazyLoader
+     39 
+
+~/miniconda3/envs/py37/lib/python3.7/site-packages/tensorflow/python/__init__.py in <module>
+     43 from tensorflow.python import distribute
+     44 # from tensorflow.python import keras
+---> 45 from tensorflow.python.feature_column import feature_column_lib as feature_column
+     46 # from tensorflow.python.layers import layers
+     47 from tensorflow.python.module import module
+
+~/miniconda3/envs/py37/lib/python3.7/site-packages/tensorflow/python/feature_column/feature_column_lib.py in <module>
+     16 
+     17 # pylint: disable=unused-import,line-too-long,wildcard-import,g-bad-import-order
+---> 18 from tensorflow.python.feature_column.feature_column import *
+     19 from tensorflow.python.feature_column.feature_column_v2 import *
+     20 from tensorflow.python.feature_column.sequence_feature_column import *
+
+~/miniconda3/envs/py37/lib/python3.7/site-packages/tensorflow/python/feature_column/feature_column.py in <module>
+    141 from tensorflow.python.framework import sparse_tensor as sparse_tensor_lib
+    142 from tensorflow.python.framework import tensor_shape
+--> 143 from tensorflow.python.layers import base
+    144 from tensorflow.python.ops import array_ops
+    145 from tensorflow.python.ops import check_ops
+
+~/miniconda3/envs/py37/lib/python3.7/site-packages/tensorflow/python/layers/base.py in <module>
+     14 # =============================================================================
+     15 """Contains the base Layer class, from which all layers inherit."""
+---> 16 from tensorflow.python.keras.legacy_tf_layers import base
+     17 
+     18 InputSpec = base.InputSpec
+
+~/miniconda3/envs/py37/lib/python3.7/site-packages/tensorflow/python/keras/__init__.py in <module>
+     20 # pylint: disable=unused-import
+     21 from tensorflow.python import tf2
+---> 22 from tensorflow.python.keras import distribute
+     23 
+     24 # See b/110718070#comment18 for more details about this import.
+
+~/miniconda3/envs/py37/lib/python3.7/site-packages/tensorflow/python/keras/distribute/__init__.py in <module>
+     16 
+     17 # pylint: disable=unused-import
+---> 18 from tensorflow.python.keras.distribute import sidecar_evaluator
+
+~/miniconda3/envs/py37/lib/python3.7/site-packages/tensorflow/python/keras/distribute/sidecar_evaluator.py in <module>
+     21 from tensorflow.python.platform import tf_logging as logging
+     22 from tensorflow.python.training import checkpoint_utils
+---> 23 from tensorflow.python.training.tracking import util as tracking_util
+     24 
+     25 _PRINT_EVAL_STEP_EVERY_SEC = 60.0
+
+~/miniconda3/envs/py37/lib/python3.7/site-packages/tensorflow/python/training/tracking/util.py in <module>
+     43 from tensorflow.python.platform import gfile
+     44 from tensorflow.python.platform import tf_logging as logging
+---> 45 from tensorflow.python.saved_model import utils_impl
+     46 from tensorflow.python.saved_model.pywrap_saved_model import metrics
+     47 from tensorflow.python.training import checkpoint_management
+
+~/miniconda3/envs/py37/lib/python3.7/site-packages/tensorflow/python/saved_model/utils_impl.py in <module>
+     26 from tensorflow.python.lib.io import file_io
+     27 from tensorflow.python.saved_model import constants
+---> 28 from tensorflow.python.saved_model import nested_structure_coder
+     29 from tensorflow.python.util import compat
+     30 from tensorflow.python.util import deprecation
+
+~/miniconda3/envs/py37/lib/python3.7/site-packages/tensorflow/python/saved_model/nested_structure_coder.py in <module>
+     37 from tensorflow.python.data.ops import iterator_ops
+     38 from tensorflow.python.data.ops import optional_ops
+---> 39 from tensorflow.python.distribute import values
+     40 from tensorflow.python.framework import dtypes
+     41 from tensorflow.python.framework import extension_type
+
+~/miniconda3/envs/py37/lib/python3.7/site-packages/tensorflow/python/distribute/values.py in <module>
+     23 from tensorflow.python.distribute import packed_distributed_variable as packed
+     24 from tensorflow.python.distribute import reduce_util
+---> 25 from tensorflow.python.distribute import values_util
+     26 from tensorflow.python.eager import context
+     27 from tensorflow.python.framework import composite_tensor
+
+~/miniconda3/envs/py37/lib/python3.7/site-packages/tensorflow/python/distribute/values_util.py in <module>
+     25 from tensorflow.python.ops import variable_scope as vs
+     26 from tensorflow.python.saved_model import save_context
+---> 27 from tensorflow.python.saved_model import save_options
+     28 from tensorflow.python.training.saving import saveable_object
+     29 
+
+ImportError: cannot import name 'save_options' from 'tensorflow.python.saved_model' (/github/home/miniconda3/envs/py37/lib/python3.7/site-packages/tensorflow/python/saved_model/__init__.py)
+ImportError: cannot import name 'save_options' from 'tensorflow.python.saved_model' (/github/home/miniconda3/envs/py37/lib/python3.7/site-packages/tensorflow/python/saved_model/__init__.py)
